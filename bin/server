@@ -28,6 +28,14 @@ const argv = optimist
         default: undefined,
         describe: 'IP address to inform to client'
     })
+    .options('client-min-port-range', {
+        default: 1024,
+        describe: 'Port start range to use for localtunnel clients to connect to'
+    })
+    .options('client-max-port-range', {
+        default: 65535,
+        describe: 'Port end range to use for localtunnel clients to connect to'
+    })
     .options('domain', {
         describe: 'Specify the base domain name. This is optional if hosting localtunnel from a regular example.com domain. This is required if hosting a localtunnel server from a subdomain (i.e. lt.example.dom where clients will be client-app.lt.example.come)',
     })
@@ -46,6 +54,8 @@ const server = CreateServer({
     max_tcp_sockets: argv['max-sockets'],
     secure: argv.secure,
     domain: argv.domain,
+    client_min_port_range: argv['client-min-port-range'],
+    client_max_port_range: argv['client-max-port-range'],
     ip: argv.ip,
 });
 
