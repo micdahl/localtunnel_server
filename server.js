@@ -71,6 +71,7 @@ export default function(opt) {
 
             const url = schema + '://' + info.id + '.' + ctx.request.host;
             info.url = url;
+            info.ip = opt.ip;
             ctx.body = info;
             return;
         }
